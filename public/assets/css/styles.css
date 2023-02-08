@@ -1,28 +1,58 @@
+body {
+  background-color: rgb(39, 39, 39);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 nav {
-  background-color: #333;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(78, 78, 78);
+  font-size: 25px;
+  padding: 20px;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: relative;
-  width: 100%;
+.right-links {
+  display: flex;
+  justify-content: flex-end;
 }
 
-nav ul li {
-  display: inline-block;
-  background-color: #333;
-  width: 24%;
-  float: left;
-}
-
-nav a {
-  display: block;
-  padding: 0 10px;
-  color: #fff;
-  font-size: 20px;
-  line-height: 60px;
+a {
+  margin-right: 20px;
   text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: rgb(212, 209, 209);
+}
+.card {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inner-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.card-body {
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 20px;
+  background-color: rgb(178, 177, 177);
+}
+
+.card-timestamp {
+  color: gray;
+  font-size: 15px;
 }
