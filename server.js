@@ -12,17 +12,18 @@ app.engine(
 );
 
 app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("views"));
-
+let loggedIn = false;
 app.get("/", (req, res) => {
-  res.render("layouts/main", { title: "Tech Blog - Home" });
+  res.render("layouts/main", { title: "Tech Blog - Home", loggedIn });
 });
-app.get("/signUp", (req, res) => {
-  res.render("signUpPage", { title: "Tech Blog - Sign Up" });
-});
-app.get("/signIn", (req, res) => {
-  res.render("signInPage", { title: "Tech Blog - Sign In" });
+app.get("/auth", (req, res) => {
+  res.render("authPage", {
+    layout: false,
+    title: "Tech Blog - Sign Up",
+  });
 });
 
 app.listen(PORT, () => {

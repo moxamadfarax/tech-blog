@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Tech Blog</title>
   </head>
-  <body>
-    {{{nav}}}
-    {{{body}}}
-  </body>
+  {{#if loggedIn}}
+  {{> navBar1}}
+  {{else}}
+  {{> navBar2}}
+  {{/if}}
+ {{> blogPost}}
 </html>
