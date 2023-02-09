@@ -14,15 +14,15 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static("views"));
-let loggedIn = false;
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
-  res.render("layouts/main", { title: "Tech Blog - Home", loggedIn });
+  res.render("layouts/main", { title: "Tech Blog - Home", loggedIn: false });
 });
+
 app.get("/auth", (req, res) => {
   res.render("authPage", {
-    layout: false,
-    title: "Tech Blog - Sign Up",
+    loggedIn: true,
   });
 });
 
