@@ -1,5 +1,5 @@
 // Requiring models.
-const User = require("./UserData");
+const User = require("./Users");
 const Blogs = require("./Blogs");
 const Comments = require("./Comments");
 
@@ -23,4 +23,4 @@ Blogs.hasMany(Comments, {
 });
 
 // Exporting models.
-module.exports = { User, Blogs, Comment };
+module.exports = { User, Blogs, Comments };

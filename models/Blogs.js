@@ -23,7 +23,7 @@ Blogs.init(
       allowNull: false,
     },
     blog_data: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

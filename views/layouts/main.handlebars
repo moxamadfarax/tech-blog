@@ -7,6 +7,33 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <title>Tech Blog</title>
   </head>
-  {{> navBar}}
-  {{> blogPost}}
+  <body>
+    <nav class="fixed-nav">
+      <a href="./main.html" class="home-link">Home</a>
+      <div class="right-links">
+        <a href="./blogs.html">My Blogs</a>
+        <a href="./login.html">Sign Out</a>
+      </div>
+    </nav>
+    <div class="main">
+      <h1>Sign In</h1>
+      <form>
+        <h2 class="errMsg" id="errMsg"></h2>
+        <div>
+          <label for="email">Enter email:</label>
+          <input type="text" id="email" />
+        </div>
+        <div>
+          <label for="username">Enter Username:</label>
+          <input type="text" id="username" />
+        </div>
+        <div>
+          <label for="password">Enter Password:</label>
+          <input type="password" id="password" />
+        </div>
+        <button class="submit-btn" id="submitBtn">Submit</button>
+      </form>
+    </div>
+    <script src="/js/auth.js"></script>
+  </body>
 </html>
