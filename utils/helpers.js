@@ -1,10 +1,14 @@
-module.exports = {
-  format_time: (date) => {
-    return date.toLocaleTimeString();
-  },
-  format_date: (date) => {
-    return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${
-      new Date(date).getFullYear() + 5
-    }`;
-  },
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+  return formatter.format(date);
 };
+
+module.exports = formatDate;

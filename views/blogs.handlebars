@@ -1,0 +1,11 @@
+<div class="main">
+  {{#each blogs}}
+    <div class="card">
+      <div class="inner-card">
+        <h3 class="card-title">{{this.blog_title}}</h3>
+        <span class="card-timestamp">{{this.createdAt}}</span>
+      </div>
+      <p class="card-body">{{this.blog_body}}</p>
+    </div>
+  {{/each}}
+</div>

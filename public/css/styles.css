@@ -132,7 +132,8 @@ h2 {
 }
 label,
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
   display: block;
   width: 100%;
   padding: 10px;
@@ -141,6 +142,7 @@ input[type="password"] {
   box-sizing: border-box;
   border-radius: 5px;
   border: 2px solid gray;
+  resize: none;
 }
 .submit-btn {
   padding: 10px 20px;
@@ -175,4 +177,12 @@ header {
   font-size: 17px;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+.blogForm {
+  width: 80%;
+}
+textarea,
+input {
+  font-family: sans-serif;
 }
