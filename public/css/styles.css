@@ -154,3 +154,8 @@ input[type="password"] {
   color: rgb(200, 58, 58);
   display: none;
 }
+header {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}

@@ -4,8 +4,7 @@ const _ = require("lodash");
 const validator = require("validator");
 
 // Creates a new user
-router.post("/", async (req, res) => {
-  console.log(req.body);
+router.post("/signUp", async (req, res) => {
   if (!validator.isEmail(req.body.email)) {
     console.error("Invalid email address");
     res.status(400).json({ message: "Invalid email address" });
@@ -63,18 +62,13 @@ router.post("/", async (req, res) => {
     });
     return;
   }
-  console.log("here");
   try {
     const userData = await Users.create(req.body);
-
-    console.log("Setting session cookie");
     req.session.save(() => {
       req.session.user_id = userData.user_id;
       req.session.logged_in = true;
-
       res.status(200).json(userData);
     });
-    console.log("Session cookie set");
   } catch (err) {
     res.status(400).json(err);
     console.log(err);
@@ -82,10 +76,10 @@ router.post("/", async (req, res) => {
 });
 
 // Login a current user
-router.post("/login", async (req, res) => {
+router.post("/signIn", async (req, res) => {
   try {
     const userData = await Users.findOne({
-      where: { user_email: req.body.user_email },
+      where: { email: req.body.email },
     });
 
     if (!userData) {
@@ -116,7 +110,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Log the user out
-router.post("/logout", (req, res) => {
+router.post("/signOut", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
