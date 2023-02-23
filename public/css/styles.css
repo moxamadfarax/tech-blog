@@ -23,7 +23,7 @@ a {
   justify-content: flex-end;
   border: none;
   background-color: transparent;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
 }
 
@@ -155,7 +155,7 @@ textarea {
   cursor: pointer;
 }
 .home-link {
-  font-size: 30px;
+  font-size: 35px;
 }
 .material-icons {
   font-size: 50px;
@@ -185,4 +185,34 @@ header {
 textarea,
 input {
   font-family: sans-serif;
+}
+.btns {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.deleteBtn {
+  padding: 10px 20px;
+  width: auto;
+  background-color: rgb(251, 70, 70);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+.editBtn {
+  padding: 10px 20px;
+  width: auto;
+  background-color: rgb(68, 130, 215);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.edit,
+.delete {
+  font-size: 25px;
 }
