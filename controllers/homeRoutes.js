@@ -48,7 +48,7 @@ router.get("/newPost", authCheck, async (req, res) => {
 });
 
 // Route to view all posts
-router.get("/posts", authCheck, async (req, res) => {
+router.get("/myPosts", authCheck, async (req, res) => {
   try {
     const blogData = await Blogs.findAll({
       include: [

@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({});
 
-// Configure and link session obj with sequelize store
 const sess = {
   secret: "Super secret",
   cookie: {
@@ -27,7 +26,6 @@ const sess = {
   }),
 };
 
-// Add express-session and store as express.js middleware
 app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
@@ -40,7 +38,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers"));
 app.use(routes);
 
-// sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
