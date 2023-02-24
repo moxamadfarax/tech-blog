@@ -1,4 +1,5 @@
-<div class="main">{{#if blogs}}
+<div class="main">
+  {{#if blogs}}
     {{#each blogs}}
       <button class="cardBtn">
         <div class="inner-card">
@@ -6,15 +7,18 @@
           <span class="card-timestamp">{{this.createdAt}}</span>
           <span class="blogId" style="display:none">{{this.blog_id}}</span>
         </div>
+        <p class="username">{{this.username}}</p>
       </button>
     {{/each}}
   {{else}}
-    <div class="main"><header>
+    <div class="main">
+      <header>
         You currently have no blogs.
         <br /><br />
         To create a blog post, navigate to the homepage and press the plus
         button.
         <br /><br />
-      </header></div>
+      </header>
+    </div>
   {{/if}}
 </div>
