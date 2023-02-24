@@ -37,6 +37,31 @@ router.get("/signIn", (req, res) => {
   }
 });
 
+router.get("/dashboard", authCheck, async (req, res) => {
+  try {
+    const blogData = await Blogs.findAll({
+      include: [
+        {
+          model: Users,
+        },
+      ],
+    });
+    const blogs = blogData.map((blog) => {
+      const plainBlog = blog.get({ plain: true });
+      plainBlog.createdAt = formatTime(plainBlog.createdAt);
+      return plainBlog;
+    });
+    console.log(blogs);
+    res.render("dashboard", {
+      blogs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/newPost", authCheck, async (req, res) => {
   try {
     res.render("newPost", {

@@ -10,7 +10,6 @@ router.post("/newPost", (req, res) => {
     blog_title: req.body.title,
     blog_body: req.body.body,
   };
-
   // Creating a new post in the DB
   Blogs.create(blogData)
     .then((newPost) => {

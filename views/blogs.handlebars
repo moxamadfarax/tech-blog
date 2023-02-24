@@ -1,13 +1,22 @@
 {{#if blogs}}
   <div class="main">
     {{#each blogs}}
-      <button class="cardBtn">
+      <div class="card">
         <div class="inner-card">
           <h3 class="card-title">{{this.blog_title}}</h3>
           <span class="card-timestamp">{{this.createdAt}}</span>
+        </div>
+        <p class="card-body">{{this.blog_body}}</p>
+        <div class="btns">
+          <button class="editBtn">
+            <i class="material-icons edit">edit</i>
+          </button>
+          <button class="deleteBtn">
+            <i class="material-icons delete">delete</i>
+          </button>
           <span class="blogId" style="display:none">{{this.blog_id}}</span>
         </div>
-      </button>
+      </div>
     {{/each}}
   </div>
 {{else}}
@@ -18,3 +27,4 @@
       <br /><br />
     </header></div>
 {{/if}}
+<script src="/js/delete.js"></script>

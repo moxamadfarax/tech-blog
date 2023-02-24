@@ -8,7 +8,7 @@ const signOut = async () => {
     headers: { "Content-Type": "application/json" },
   });
   if (response.ok) {
-    document.location.replace("/");
+    document.location.replace("/signIn");
   } else {
     alert(response.statusText);
   }

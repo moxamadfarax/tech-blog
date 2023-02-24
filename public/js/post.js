@@ -15,7 +15,7 @@ const newPost = async (event) => {
 
     if (response.ok) {
       console.log("cool");
-      //   document.location.replace("/");
+      document.location.replace("/myPosts");
     } else {
       console.log("nah");
     }
