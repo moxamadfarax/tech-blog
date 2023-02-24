@@ -216,3 +216,16 @@ input {
 .delete {
   font-size: 25px;
 }
+.cardBtn {
+  display: block;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.cardBtn:hover {
+  cursor: pointer;
+  background-color: rgb(178, 177, 177);
+}

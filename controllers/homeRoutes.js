@@ -3,7 +3,7 @@ const authCheck = require("../utils/authCheck");
 const formatTime = require("../utils/helpers");
 const { Blogs, Users } = require("../models");
 
-router.get("/", authCheck, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     res.render("homePage", {
       logged_in: req.session.logged_in,
@@ -60,11 +60,15 @@ router.get("/myPosts", authCheck, async (req, res) => {
         blog_user_id: req.session.user_id,
       },
     });
-    const blogs = blogData.map((Blogs) => Blogs.get({ plain: true }));
+    const blogs = blogData.map((blog) => {
+      const plainBlog = blog.get({ plain: true });
+      plainBlog.createdAt = formatTime(plainBlog.createdAt);
+      return plainBlog;
+    });
     console.log(blogs);
     res.render("blogs", {
       blogs,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);

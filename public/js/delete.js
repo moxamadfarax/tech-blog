@@ -1,7 +1,9 @@
 document.querySelectorAll(".deleteBtn").forEach((button) => {
   button.addEventListener("click", async (event) => {
     try {
-      const blogId = event.target.dataset.blog_id;
+      const blogId = event.target
+        .closest(".card")
+        .querySelector(".blogId").textContent;
       if (!blogId) {
         console.log("Blog ID not found!");
         return;

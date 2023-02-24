@@ -13,14 +13,25 @@
     <title>Tech Blog</title>
   </head>
   <body>
-    <nav class="fixed-nav">
-      <a href="/" class="home-link">Home</a>
-      <div class="right-links">
-        <a href="/allPosts">All Blogs</a>
-        <a href="/myPosts">My Blogs</a>
-        <a href="" id="signOutBtn">Sign Out</a>
-      </div>
-    </nav>
+    {{#if logged_in}}
+      <nav class="fixed-nav">
+        <a href="/" class="home-link">Home</a>
+        <div class="right-links">
+          <a href="/allPosts">All Blogs</a>
+          <a href="/myPosts">My Blogs</a>
+          <a href="/signOut" id="signOutBtn">Sign Out</a>
+        </div>
+      </nav>
+    {{else}}
+      <nav class="fixed-nav">
+        <a href="/" class="home-link">Home</a>
+        <div class="right-links">
+          <a href="/allPosts">All Blogs</a>
+          <a href="/myPosts">My Blogs</a>
+          <a href="/signIn">Sign In</a>
+        </div>
+      </nav>
+    {{/if}}
     {{{body}}}
   </body>
 </html>
