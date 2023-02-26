@@ -1,11 +1,10 @@
 <div class="main">
   {{#if blogs}}
     {{#each blogs}}
-      <button class="cardBtn">
+      <button class="cardBtn" data-blog-id="{{this.blog_id}}">
         <div class="inner-card">
           <h3 class="card-title">{{this.blog_title}}</h3>
           <span class="card-timestamp">{{this.createdAt}}</span>
-          <span class="blogId" style="display:none">{{this.blog_id}}</span>
         </div>
         <p class="username">{{this.username}}</p>
       </button>
@@ -13,7 +12,7 @@
   {{else}}
     <div class="main">
       <header>
-        You currently have no blogs.
+        There are currently no blogs to view.
         <br /><br />
         To create a blog post, navigate to the homepage and press the plus
         button.
@@ -22,3 +21,4 @@
     </div>
   {{/if}}
 </div>
+<script src="/js/dashboard.js"></script>

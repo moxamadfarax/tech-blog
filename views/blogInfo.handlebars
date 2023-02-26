@@ -1,16 +1,15 @@
 <div class="main">
   <div class="card">
     <div class="inner-card">
-      <h3 class="card-title">{{this.blog_title}}</h3>
-      <span class="card-timestamp">{{this.createdAt}}</span>
+      <h3 class="card-title">{{blog.blog_title}}</h3>
+      <span class="card-timestamp">{{blog.createdAt}}</span>
     </div>
-    <p class="card-body-info">{{this.blog_body}}</p>
+    <p class="card-body-info">{{blog.blog_body}}</p>
     <div class="comment-container">
-      <a href="./comment.html">
-        <button class="commentBtn">
-          <i class="material-icons comment">add_comment</i>
-        </button></a>
-      <span class="blogId" style="display: none">{{this.blog_id}}</span>
+      <button class="commentBtn">
+        <i class="material-icons comment">add_comment</i>
+      </button>
+      <span class="blogId" style="display: none">{{blog.blog_id}}</span>
     </div>
   </div>
 </div>

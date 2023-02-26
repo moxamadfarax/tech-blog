@@ -2,6 +2,7 @@ const router = require("express").Router();
 const authCheck = require("../utils/authCheck");
 const formatTime = require("../utils/helpers");
 const { Blogs, Users } = require("../models");
+const { format } = require("mysql2");
 
 router.get("/", async (req, res) => {
   try {
@@ -101,6 +102,34 @@ router.get("/myPosts", authCheck, async (req, res) => {
     console.log(blogs);
     res.render("blogs", {
       blogs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blogInfo/:id", async (req, res) => {
+  try {
+    const blogData = await Blogs.findOne({
+      where: {
+        blog_id: req.params.id,
+      },
+      attributes: ["blog_id", "blog_title", "blog_body", "createdAt"],
+    });
+
+    const formattedTime = formatTime(blogData.createdAt);
+
+    const blog = {
+      blog_id: blogData.blog_id,
+      blog_title: blogData.blog_title,
+      blog_body: blogData.blog_body,
+      createdAt: formattedTime,
+    };
+
+    res.render("blogInfo", {
+      blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
