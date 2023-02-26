@@ -50,8 +50,13 @@ router.get("/dashboard", authCheck, async (req, res) => {
     const blogs = blogData.map((blog) => {
       const plainBlog = blog.get({ plain: true });
       plainBlog.createdAt = formatTime(plainBlog.createdAt);
-      plainBlog.username = plainBlog.User.username;
-      delete plainBlog.User; // Remove the User property from the blog object
+
+      if (plainBlog.User) {
+        plainBlog.username = plainBlog.User.username;
+        delete plainBlog.User;
+        plainBlog.username = blog.User.username;
+      }
+
       return plainBlog;
     });
     console.log(blogs);

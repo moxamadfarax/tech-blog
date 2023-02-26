@@ -235,3 +235,29 @@ input {
   justify-content: flex-start;
   font-size: 17px;
 }
+.card-body-info {
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 20px;
+  background-color: rgb(178, 177, 177);
+  height: 70%;
+}
+.comment-container {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+.commentBtn {
+  padding: 10px 20px;
+  width: auto;
+  background-color: #ababab;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+.comment {
+  font-size: 30px;
+}
