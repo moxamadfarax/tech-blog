@@ -39,25 +39,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
-  const { id } = req.params;
-  const { title, body } = req.body;
-
-  try {
-    const blog = await Blogs.findByPk(id);
-    if (!blog) {
-      res.status(404).json({ message: "Post not found" });
-      return;
-    }
-
-    blog.blog_title = title;
-    blog.blog_body = body;
-    await blog.save();
-
-    res.status(200).json(blog);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
