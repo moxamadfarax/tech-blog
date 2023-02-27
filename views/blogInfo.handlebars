@@ -6,13 +6,13 @@
     </div>
     <p class="card-body-info">{{blog.blog_body}}</p>
 
-    <div class="comment-container">
-      <button class="commentBtn">
+    <div class="commentBtn-container">
+      <button class="commentBtn" data-blog-id="{{blog.blog_id}}">
         <i class="material-icons comment">add_comment</i>
       </button>
 
-      <span class="blogId" style="display: none">{{blog.blog_id}}</span>
     </div>
     <span class="username">Created By {{blog.username}}</span>
   </div>
 </div>
+<script src="/js/blogInfo.js"></script>

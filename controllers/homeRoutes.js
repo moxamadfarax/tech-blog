@@ -2,7 +2,6 @@ const router = require("express").Router();
 const authCheck = require("../utils/authCheck");
 const formatTime = require("../utils/helpers");
 const { Blogs, Users } = require("../models");
-const { format } = require("mysql2");
 
 router.get("/", async (req, res) => {
   try {
@@ -110,7 +109,7 @@ router.get("/myPosts", authCheck, async (req, res) => {
   }
 });
 
-router.get("/blogInfo/:id", async (req, res) => {
+router.get("/blogInfo/:id", authCheck, async (req, res) => {
   try {
     const blogData = await Blogs.findOne({
       include: [
@@ -150,10 +149,16 @@ router.get("/blogInfo/:id", async (req, res) => {
   }
 });
 
-router.get("/editBlog/:id", (req, res) => {
+router.get("/editBlog/:id", authCheck, (req, res) => {
   console.log(req.params.id);
   let blog_id = req.params.id;
   res.render("editPost", { blog_id });
+});
+
+router.get("/addComment/:id", authCheck, (req, res) => {
+  console.log(req.params.id);
+  let blog_id = req.params.id;
+  res.render("comment", { blog_id });
 });
 
 module.exports = router;
