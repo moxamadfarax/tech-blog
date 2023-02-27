@@ -39,4 +39,32 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.put("/updatePost/:id", async (req, res) => {
+  console.log("hit");
+  try {
+    const blogData = await Blogs.update(
+      {
+        blog_title: req.body.title,
+        blog_body: req.body.body,
+      },
+      {
+        where: {
+          blog_id: req.params.id,
+        },
+      }
+    );
+
+    if (!blogData[0]) {
+      // no blog post was updated
+      res.status(404).json({ message: "No blog post found with this id!" });
+      return;
+    }
+
+    res.status(200).json({ message: "Blog post updated successfully!" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
