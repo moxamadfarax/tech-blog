@@ -242,7 +242,7 @@ input {
   background-color: rgb(178, 177, 177);
   height: 50%;
 }
-.comment-container {
+.commentBtn-container {
   display: flex;
   padding-top: 20px;
   flex-direction: row;
