@@ -113,10 +113,21 @@ router.get("/myPosts", authCheck, async (req, res) => {
 router.get("/blogInfo/:id", async (req, res) => {
   try {
     const blogData = await Blogs.findOne({
+      include: [
+        {
+          model: Users,
+        },
+      ],
       where: {
         blog_id: req.params.id,
       },
-      attributes: ["blog_id", "blog_title", "blog_body", "createdAt"],
+      attributes: [
+        "blog_id",
+        "blog_title",
+        "blog_body",
+        "createdAt",
+        "blog_user_id",
+      ],
     });
 
     const formattedTime = formatTime(blogData.createdAt);
@@ -126,8 +137,9 @@ router.get("/blogInfo/:id", async (req, res) => {
       blog_title: blogData.blog_title,
       blog_body: blogData.blog_body,
       createdAt: formattedTime,
+      username: blogData.User.username,
     };
-
+    console.log(blog);
     res.render("blogInfo", {
       blog,
       logged_in: req.session.logged_in,
@@ -136,6 +148,12 @@ router.get("/blogInfo/:id", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get("/editBlog/:id", (req, res) => {
+  console.log(req.params.id);
+  let blog_id = req.params.id;
+  res.render("editPost", { blog_id });
 });
 
 module.exports = router;

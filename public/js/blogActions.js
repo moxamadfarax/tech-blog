@@ -13,11 +13,22 @@ document.querySelectorAll(".deleteBtn").forEach((button) => {
       });
       if (response.ok) {
         event.target.closest(".card").remove();
+        location.reload();
       } else {
         console.log("Failed to delete blog post!");
       }
     } catch (err) {
       console.error(err);
     }
+  });
+});
+
+document.querySelectorAll(".editBtn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const blogId = event.target
+      .closest(".card")
+      .querySelector(".blogId").textContent;
+    console.log(blogId);
+    window.location.href = `/editBlog/${blogId}`;
   });
 });

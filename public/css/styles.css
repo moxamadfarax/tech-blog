@@ -240,7 +240,7 @@ input {
   font-size: 20px;
   padding: 20px;
   background-color: rgb(178, 177, 177);
-  height: 70%;
+  height: 50%;
 }
 .comment-container {
   display: flex;
@@ -260,4 +260,9 @@ input {
 }
 .comment {
   font-size: 30px;
+}
+.username {
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
