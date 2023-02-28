@@ -3,6 +3,7 @@ const authCheck = require("../utils/authCheck");
 const formatTime = require("../utils/helpers");
 const { Blogs, Users, Comments } = require("../models");
 
+// Route that renders homepage.
 router.get("/", async (req, res) => {
   try {
     res.render("homePage", {
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Route that renders sign up page.
 router.get("/signUp", (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -25,6 +27,7 @@ router.get("/signUp", (req, res) => {
   }
 });
 
+// Route that renders sign in page.
 router.get("/signIn", (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -37,6 +40,7 @@ router.get("/signIn", (req, res) => {
   }
 });
 
+// Route that renders dashboard to view all blogs posted.
 router.get("/dashboard", authCheck, async (req, res) => {
   try {
     const blogData = await Blogs.findAll({
@@ -69,6 +73,7 @@ router.get("/dashboard", authCheck, async (req, res) => {
   }
 });
 
+// Route that render page to create new post.
 router.get("/newPost", authCheck, async (req, res) => {
   try {
     res.render("newPost", {
@@ -79,7 +84,7 @@ router.get("/newPost", authCheck, async (req, res) => {
   }
 });
 
-// Route to view all posts
+// Route to view all your posts.
 router.get("/myPosts", authCheck, async (req, res) => {
   try {
     const blogData = await Blogs.findAll({
@@ -107,6 +112,7 @@ router.get("/myPosts", authCheck, async (req, res) => {
   }
 });
 
+// Route to view info of particular blog.
 router.get("/blogInfo/:id", authCheck, async (req, res) => {
   try {
     const blogData = await Blogs.findOne({
@@ -162,14 +168,17 @@ router.get("/blogInfo/:id", authCheck, async (req, res) => {
   }
 });
 
+// Route that renders page to edit you blog.
 router.get("/editBlog/:id", authCheck, (req, res) => {
   let blog_id = req.params.id;
   res.render("editPost", { blog_id });
 });
 
+// Route that renders page to add comment.
 router.get("/addComment/:id", authCheck, (req, res) => {
   let blog_id = req.params.id;
   res.render("comment", { blog_id });
 });
 
+// Exporting router.
 module.exports = router;

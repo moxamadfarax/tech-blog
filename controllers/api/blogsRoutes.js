@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Blogs = require("../../models/Blogs");
 
+// Route to create new blog post.
 router.post("/newPost", (req, res) => {
   const blogData = {
     blog_user_id: req.session.user_id,
@@ -17,6 +18,7 @@ router.post("/newPost", (req, res) => {
     });
 });
 
+// Route to delete blog post based off of it's id.
 router.delete("/:id", async (req, res) => {
   try {
     const blogsData = await Blogs.destroy({
@@ -34,6 +36,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Route to update blog post based off of it's id.
 router.put("/updatePost/:id", async (req, res) => {
   try {
     const blogData = await Blogs.update(
@@ -52,11 +55,11 @@ router.put("/updatePost/:id", async (req, res) => {
       res.status(404).json({ message: "No blog post found with this id!" });
       return;
     }
-
     res.status(200).json({ message: "Blog post updated successfully!" });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Exporting routes.
 module.exports = router;

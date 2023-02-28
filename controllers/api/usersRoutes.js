@@ -3,6 +3,7 @@ const Users = require("../../models/Users");
 const _ = require("lodash");
 const validator = require("validator");
 
+// Route to sign up with multi level password authentication.
 router.post("/signUp", async (req, res) => {
   if (!validator.isEmail(req.body.email)) {
     console.error("Invalid email address");
@@ -73,6 +74,7 @@ router.post("/signUp", async (req, res) => {
   }
 });
 
+// Route to sign in to made a ccount with some authentication as well.
 router.post("/signIn", async (req, res) => {
   try {
     const userData = await Users.findOne({
@@ -100,6 +102,7 @@ router.post("/signIn", async (req, res) => {
   }
 });
 
+// Route to sign out by terminatig session.
 router.post("/signOut", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -110,4 +113,5 @@ router.post("/signOut", (req, res) => {
   }
 });
 
+// Exporting router.
 module.exports = router;

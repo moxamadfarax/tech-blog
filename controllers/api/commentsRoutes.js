@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Comments = require("../../models/Comments");
 
+// Route to create comment based off of blog id.
 router.post("/new/:id", (req, res) => {
   const commentData = {
     blog_id: req.params.id,
@@ -19,4 +20,5 @@ router.post("/new/:id", (req, res) => {
     });
 });
 
+// Exporting router.
 module.exports = router;
