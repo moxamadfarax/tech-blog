@@ -3,8 +3,6 @@ const Blogs = require("../../models/Blogs");
 
 // Route to create a new post
 router.post("/newPost", (req, res) => {
-  console.log("hit");
-  console.log(req.body);
   const blogData = {
     blog_user_id: req.session.user_id,
     blog_title: req.body.title,

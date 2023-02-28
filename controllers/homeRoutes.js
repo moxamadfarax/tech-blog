@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const authCheck = require("../utils/authCheck");
 const formatTime = require("../utils/helpers");
-const { Blogs, Users } = require("../models");
+const { Blogs, Users, Comments } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -116,6 +116,16 @@ router.get("/blogInfo/:id", authCheck, async (req, res) => {
         {
           model: Users,
         },
+        {
+          model: Comments,
+          include: [
+            {
+              model: Users,
+              attributes: ["username"],
+            },
+          ],
+          order: [["createdAt", "ASC"]],
+        },
       ],
       where: {
         blog_id: req.params.id,
@@ -137,8 +147,14 @@ router.get("/blogInfo/:id", authCheck, async (req, res) => {
       blog_body: blogData.blog_body,
       createdAt: formattedTime,
       username: blogData.User.username,
+      comments: blogData.Comments.map((comment) => ({
+        comment_id: comment.comment_id,
+        comment_user: comment.User.username,
+        comment_body: comment.comment,
+        createdAt: formatTime(comment.createdAt),
+      })),
     };
-    console.log(blog);
+
     res.render("blogInfo", {
       blog,
       logged_in: req.session.logged_in,

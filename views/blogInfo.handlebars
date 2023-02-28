@@ -5,12 +5,21 @@
       <span class="card-timestamp">Created at {{blog.createdAt}}</span>
     </div>
     <p class="card-body-info">{{blog.blog_body}}</p>
-
+    {{#if blog.comments}}
+      <div class="comments-container">
+        {{#each blog.comments}}
+          <div class="inner-card">
+            <span>{{this.comment_user}}</span>
+            <span class="card-timestamp">Created at {{this.createdAt}}</span>
+          </div>
+          <p class="comment-body">{{this.comment_body}}</p>
+        {{/each}}
+      </div>
+    {{/if}}
     <div class="commentBtn-container">
       <button class="commentBtn" data-blog-id="{{blog.blog_id}}">
         <i class="material-icons comment">add_comment</i>
       </button>
-
     </div>
     <span class="username">Created By {{blog.username}}</span>
   </div>

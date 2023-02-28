@@ -243,8 +243,8 @@ input {
   height: 50%;
 }
 .commentBtn-container {
-  display: flex;
   padding-top: 20px;
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
@@ -267,10 +267,11 @@ input {
   justify-content: flex-end;
 }
 .comments-container {
-  margin-top: 10px;
+  margin-top: 20px;
   border-radius: 10px;
   font-size: 20px;
-  padding: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 .comment-body {
   margin-bottom: 30px;
