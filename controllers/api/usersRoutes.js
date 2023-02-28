@@ -3,7 +3,6 @@ const Users = require("../../models/Users");
 const _ = require("lodash");
 const validator = require("validator");
 
-// Creates a new user
 router.post("/signUp", async (req, res) => {
   if (!validator.isEmail(req.body.email)) {
     console.error("Invalid email address");
@@ -71,13 +70,10 @@ router.post("/signUp", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
-    console.log(err);
   }
 });
 
-// Login a current user
 router.post("/signIn", async (req, res) => {
-  console.log(req.body);
   try {
     const userData = await Users.findOne({
       where: { email: req.body.email },
@@ -104,7 +100,6 @@ router.post("/signIn", async (req, res) => {
   }
 });
 
-// Log the user out
 router.post("/signOut", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

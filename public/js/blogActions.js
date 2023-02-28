@@ -28,7 +28,6 @@ document.querySelectorAll(".editBtn").forEach((button) => {
     const blogId = event.target
       .closest(".card")
       .querySelector(".blogId").textContent;
-    console.log(blogId);
     window.location.href = `/editBlog/${blogId}`;
   });
 });

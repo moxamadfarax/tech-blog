@@ -59,13 +59,12 @@ router.get("/dashboard", authCheck, async (req, res) => {
 
       return plainBlog;
     });
-    console.log(blogs);
+
     res.render("dashboard", {
       blogs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -98,13 +97,12 @@ router.get("/myPosts", authCheck, async (req, res) => {
       plainBlog.createdAt = formatTime(plainBlog.createdAt);
       return plainBlog;
     });
-    console.log(blogs);
+
     res.render("blogs", {
       blogs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -160,19 +158,16 @@ router.get("/blogInfo/:id", authCheck, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
 router.get("/editBlog/:id", authCheck, (req, res) => {
-  console.log(req.params.id);
   let blog_id = req.params.id;
   res.render("editPost", { blog_id });
 });
 
 router.get("/addComment/:id", authCheck, (req, res) => {
-  console.log(req.params.id);
   let blog_id = req.params.id;
   res.render("comment", { blog_id });
 });

@@ -1,7 +1,6 @@
 let signOutBtn = document.getElementById("signOutBtn");
 
-const signOut = async () => {
-  console.log("clicked");
+const signOut = async (event) => {
   event.preventDefault();
   const response = await fetch("/api/users/signOut", {
     method: "POST",
