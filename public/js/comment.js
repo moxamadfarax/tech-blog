@@ -17,7 +17,7 @@ submitBtn.addEventListener("click", async (event) => {
     });
 
     if (response.ok) {
-      window.location.reload();
+      window.location.href = `/blogInfo/${blogId}`;
     } else {
       console.error("Error creating comment:", response.statusText);
     }
