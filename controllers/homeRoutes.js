@@ -51,25 +51,25 @@ router.get("/dashboard", authCheck, async (req, res) => {
         },
       ],
     });
+
     const blogs = blogData.map((blog) => {
       const plainBlog = blog.get({ plain: true });
       plainBlog.createdAt = formatTime(plainBlog.createdAt);
-
-      if (plainBlog.User) {
-        plainBlog.username = plainBlog.User.username;
-        delete plainBlog.User;
-        plainBlog.username = blog.User.username;
-      }
-
+      plainBlog.username = blog.User.username;
+      delete plainBlog.User;
       return plainBlog;
     });
 
-    res.render("dashboard", {
+    res.render("dashBoard", {
       blogs,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.error("Error retrieving blog data: ", err);
+    res.status(500).json({
+      message: "Internal server error",
+      error: err,
+    });
   }
 });
 
