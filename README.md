@@ -13,13 +13,23 @@ If you click on a blog, you can view the comments it has, or leave a comment of 
 The "My Blogs" link will redirect you to a page where you can view you existing blogs, and edit or delete them id you wish.
 The "Sign Out" link will sign you out, and redirect you to the homepage.
 
-- Below are images of the project in use through insomnia.
+Open the app here : https://generic-tech-blog-site.herokuapp.com
 
-  ![Getting Started](img/screenshot.png)
+- Below are images of the app and it's various pages in use.
 
-  ![Getting Started](img/screenshot2.png)
+  ![Getting Started](img/screenshot6.png)
+
+  ![Getting Started](img/screenshot1.png)
+
+  ![Getting Started](img/screenshot7.png)
+
+  ![Getting Started](img/screenshot5.png)
+
+  ![Getting Started](img/screenshot4.png)
 
   ![Getting Started](img/screenshot3.png)
+
+  ![Getting Started](img/screenshot2.png)
 
 ## Table of Contents
 
